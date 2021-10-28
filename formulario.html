@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <title>Formulario</title>
+</head>
+<body>
+    <div class="padre">
+        <header class="header_nv">
+            <div class="menu margen-int">
+                <div class="logo">
+                    <a href="index.html"><img src="imagenes/logos/logo7.png"></a>
+                </div>
+                <div class="nav">
+                    <a href="index.html"><i class="fas fa-hotel"></i><span class="off" style="color: #fff;">Inicio</span></a>
+                    <a href="Nuestros-vinos.html"><i class="fas fa-wine-bottle"></i><span class="off"style="color: #fff;">Nuestros vinos</span></a>
+                    <a href="#"><i class="fas fa-id-badge"></i><span class="off"style="color: #fff;">Contacto</span></a>
+                </div>
+                <div class="social">
+                    <div><a href="https://www.instagram.com/?hl=es"><i class="fab fa-instagram"></i></a></div>
+                    <div><a href="https://twitter.com/?lang=es"><i class="fab fa-twitter-square"></i></a></div>
+                </div>
+            </div>
+        </header>
+    <form name = "formulario" class="formulario" onsubmit="return validar();">
+        <h1 class="formulario_titulo">Contáctenos</h1>
+            <input type="text" class="formulario_input" id="nombre" name="nombre" required>
+                <label for="" class="formulario_label">Nombre</label>
+            <input type="email" class="formulario_input" id="correo" name="Correo" required>
+                <label for="" class="formulario_label">Correo</label>
+            <input type="text" class="formulario_input" id="telefono" required>
+                <label for="" class="formulario_label">Teléfono</label>
+            <input type="text" class="formulario_input" id="msj" required>
+                <label for="" class="formulario_label">Mensaje</label>
+        <input type="submit" class="formulario_submit">
+    </form>
+
+<div id="info"></div>
+
+<script type="text/javascript">
+function validar() {
+    var nombre, correo, telefono, msj;
+    nombre = document.getElementById("nombre").value;
+    correo = document.getElementById("correo").value;
+    telefono = document.getElementById("telefono").value;
+    msj = document.getElementById("msj").value;
+
+expresion = /\w+@\w+\.+[a-z]/; /* expresion regular para que el correo tenga caracteres apropiados*/
+
+if(nombre === "" || correo === "" || telefono === "" || msj === ""){
+    alert("El campo Nombre está vacío");
+    return false;
+    }
+    else if(nombre.length < 3 || nombre.length >= 30) {
+        alert("El nombre debe poseer entre 3 y 30 caracteres")
+        return false
+    }
+    else if(isNaN(telefono)) {
+        alert("El teléfono ingresado debe ser un número");
+        return false;
+    }
+    else if (!expresion.test(correo)){
+        alert("El correo no es válido");
+        return false;
+    }
+}
+</script>
+</body>
+</html>
